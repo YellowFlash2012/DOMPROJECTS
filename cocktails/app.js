@@ -5,10 +5,13 @@ const baseURL = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
 const form = document.querySelector('.search-form');
 const input = document.querySelector('[name="drink"]');
 
+const loading = document.querySelector('.loading');
+
 
 //search by id www.thecocktaildb.com/api/json/v1/1/lookup.php?i=11007
 
 const fetchDrinks = async (url) => {
+    showLoading()
     try {
         const response = await fetch(url);
         const data = await response.json();
@@ -24,6 +27,7 @@ const displayDrinks = ({ drinks }) => {
 
     if (!drinks) {
         //hide loading
+        hideLoading();
         title.textContent = 'sorry, no drinks matched your search';
         section.innerHTML = '';
         return;
@@ -41,10 +45,28 @@ const displayDrinks = ({ drinks }) => {
     }).join('');
 
     //hide loading
+    hideLoading();
     title.textContent = '';
     section.innerHTML = newDrinks;
     return section;
 };
+
+const setDrink = (section) => {
+    section.addEventListener('click', (e) => {
+        // e.preventDefault();
+        const id = e.target.parentElement.dataset.id;
+        //json.stringify json.parse
+        localStorage.setItem('drink', id);
+    });
+};
+
+//loading setup
+const showLoading = () => {
+    loading.classList.remove('hide-loading');
+}
+const hideLoading = () => {
+    loading.classList.add('hide-loading');
+}
 
 
 const showDrinks = async (url) => {
@@ -54,6 +76,10 @@ const showDrinks = async (url) => {
     
     //displaydrinks
     const section = await displayDrinks(data);
+
+    if (section) {
+        setDrink(section);
+    }
 }
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -62,5 +88,13 @@ window.addEventListener('DOMContentLoaded', () => {
 
 form.addEventListener('keyup', (e) => {
     e.preventDefault();
-    console.log(input.value);
+    const value = input.value;
+    
+    if (!value) {
+        return;
+    }
+
+    showDrinks(`${baseURL}${value}`);
 });
+
+export app;
