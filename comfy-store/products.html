@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,9 +12,10 @@
 
     <title>Comfy Store | 2021</title>
 </head>
+
 <body>
     <!-- navbar -->
-    <nav class="navbar">
+    <nav class="navbar page">
         <div class="nav-center">
             <!-- nav links -->
             <div>
@@ -31,8 +33,8 @@
             </div>
 
             <!-- logo -->
-            <img src="assets/logo-white.svg" alt="" class="nav-logo">
-            
+            <img src="assets/logo-black.svg" alt="" class="nav-logo">
+
             <!-- cart icon -->
             <div class="toggle-container">
                 <button class="toggle-cart">
@@ -45,17 +47,9 @@
     </nav>
 
     <!-- hero -->
-    <section class="hero">
-        <div class="hero-container">
-            <h1 class="text-slanted">
-                rest, relax, unwind
-            </h1>
-
-            <h3>embrace your choices - we do!</h3>
-
-            <a href="products.html" class="hero-btn">
-                show now
-            </a>
+    <section class="page-hero">
+        <div class="section-center">
+            <h3 class="page-hero-title">Home / Products</h3>
         </div>
     </section>
 
@@ -144,46 +138,45 @@
         </aside>
     </div>
 
-    <!-- featured products -->
-    <section class="section featured">
-        <div class="title">
-            <h2><span>/</span> featured</h2>
-        </div>
+    <!-- products -->
+    <section class="products">
+        <!-- filters -->
+        <div class="filters">
+            <div class="filters-container">
 
-        <div class="featured-center section-center">
-            <h2 class="section-loading">
-                loading...
-            </h2>
-            <!-- single product -->
-                <article hidden class="product">
-                    <div class="product-container">
-                        <img src="assets/main-bcg.jpeg" class="product-img img" alt="">
+                <!-- search -->
+                <form class="input-form">
+                    <input type="text" class="search-input" placeholder="search...">
+                </form>
 
-                        <!-- product icons -->
-                        <div class="product-icons">
-                            <a href="product.html?id=1" class="product-icon">
-                                <i class="fas fa-search"></i>
-                            </a>
+                <!-- categories -->
+                <h4>Company</h4>
 
-                            <button class="product-cart-btn product-icon">
-                                <i class="fas fa-shopping-cart"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <footer>
-                        <p class="product-name">name</p>
-                        <h4 class="product-price">$9.99</h4>
-                    </footer>
+                <article class="companies">
+                    <button class="company-btn">all</button>
+                    <button class="company-btn">ikea</button>
                 </article>
-            <!-- end of single product -->
+
+                <!-- price -->
+                <h4>Price</h4>
+                <form class="price-form">
+                    <input type="range" class="price-filter" min="0" value="50" max="100">
+                </form>
+                <p class="price-value"></p>
+            </div>
         </div>
 
-        <a href="products.html" class="btn">
-            all products
-        </a>
+        <!-- products -->
+        <div class="products-container">
+
+        </div>
     </section>
 
-    <script type="module" src="app.js"></script>
+    <!-- page loading -->
+    <div class="page-loading">
+        <h2>Loading...</h2>
+    </div>
+
+    <script type="module" src="./src/pages/products.js"></script>
 </body>
 </html>
